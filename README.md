@@ -80,6 +80,3 @@ Open `index.html` in your browser or use Live Server in VS Code.
 
 ---
 
-## 📂 GitHub Repository
-
-https://github.com/kaithepallivijayvardhan08-spec/UPI-Fraud-Risk-Management-System-using-AI
