@@ -1,0 +1,239 @@
+<!DOCTYPE div>
+<div class="screen-container settings-container">
+    <div class="header">
+        <button class="back-btn" onclick="goBack()">←</button>
+        <h2>⚙️ Settings</h2>
+        <div style="width: 40px;"></div>
+    </div>
+
+    <!-- Profile Section -->
+    <div class="card">
+        <h3>👤 Profile</h3>
+        <div class="profile-info">
+            <div class="profile-avatar">
+                <span>👤</span>
+            </div>
+            <div class="profile-details">
+                <p><strong id="profile-name">-</strong></p>
+                <p id="profile-email">-</p>
+                <p id="profile-upi">-</p>
+            </div>
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="editProfile()">Edit Profile</button>
+    </div>
+
+    <!-- Balance Settings -->
+    <div class="card">
+        <h3>💰 Balance Settings</h3>
+        <div class="balance-display">
+            <span>Current Balance:</span>
+            <strong id="current-balance">₹0</strong>
+        </div>
+        <div class="input-group">
+            <input type="number" id="balance-input" placeholder="Enter new balance" class="input-field">
+        </div>
+        <button class="btn btn-primary btn-sm" onclick="updateBalanceFromComponent()">Update Balance</button>
+    </div>
+
+    <!-- Security Settings -->
+    <div class="card">
+        <h3>🔒 Security</h3>
+        <div class="menu-item" onclick="changePinFromComponent()">
+            <span>🔐 Change UPI PIN</span>
+            <span>→</span>
+        </div>
+        <div class="menu-item" onclick="enableBiometricFromComponent()">
+            <span>👆 Enable Biometric Login</span>
+            <span>→</span>
+        </div>
+        <div class="menu-item" onclick="showTwoFactorAuth()">
+            <span>📱 Two-Factor Authentication</span>
+            <span>→</span>
+        </div>
+    </div>
+
+    <!-- Preferences -->
+    <div class="card">
+        <h3>⚙️ Preferences</h3>
+        <div class="menu-item">
+            <span>🌙 Dark Mode</span>
+            <label class="switch">
+                <input type="checkbox" id="dark-mode-toggle" onchange="toggleDarkMode()">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div class="menu-item">
+            <span>🌐 Language</span>
+            <select id="language-select" onchange="changeLanguage(this.value)">
+                <option value="en">English</option>
+                <option value="hi">हिंदी (Hindi)</option>
+            </select>
+        </div>
+        <div class="menu-item">
+            <span>🔔 Push Notifications</span>
+            <label class="switch">
+                <input type="checkbox" id="push-notif-toggle" checked onchange="savePreferences()">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+
+    <!-- Data Management -->
+    <div class="card">
+        <h3>🗑️ Data Management</h3>
+        <div class="menu-item" onclick="exportDataFromComponent()">
+            <span>📤 Export Data</span>
+            <span>→</span>
+        </div>
+        <div class="menu-item" onclick="clearHistory()">
+            <span>🗑️ Clear Transaction History</span>
+            <span>→</span>
+        </div>
+        <div class="menu-item danger" onclick="deleteAccount()">
+            <span>⚠️ Delete Account</span>
+            <span>→</span>
+        </div>
+    </div>
+
+    <!-- About -->
+    <div class="card">
+        <h3>ℹ️ About</h3>
+        <p>SafePay v1.0.0</p>
+        <p>AI-Based UPI Fraud Prevention System</p>
+        <p>© 2024 SafePay. All rights reserved.</p>
+    </div>
+
+    <button class="btn btn-outline btn-block logout-btn" onclick="logoutFromComponent()">
+        🚪 Logout
+    </button>
+</div>
+
+<style>
+.settings-container {
+    padding: 20px;
+    background: #f5f7fb;
+    min-height: 100vh;
+    padding-bottom: 80px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.profile-info {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.profile-avatar {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #6C63FF, #FF6584);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.profile-details p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+.balance-display {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: #f0f0f0;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+}
+
+.menu-item.danger {
+    color: #FF3B30;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.3s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #6C63FF;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.btn-sm {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+}
+
+.logout-btn {
+    margin-top: 20px;
+}
+</style>

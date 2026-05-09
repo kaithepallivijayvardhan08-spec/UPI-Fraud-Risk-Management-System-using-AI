@@ -1,0 +1,170 @@
+<!DOCTYPE div>
+<div class="screen-container banksetup-container">
+    <div class="header">
+        <h2>Welcome! 👋</h2>
+        <p>Complete your account setup</p>
+    </div>
+
+    <div class="setup-form">
+        <!-- Bank Selection -->
+        <div class="card">
+            <h3>🏦 Select Bank Account</h3>
+            <div class="bank-list">
+                <label class="bank-option">
+                    <input type="radio" name="bank" value="HDFC" checked>
+                    <div class="bank-info">
+                        <span>🏦</span>
+                        <div>
+                            <strong>HDFC Bank</strong>
+                            <p>****1234</p>
+                        </div>
+                    </div>
+                </label>
+                <label class="bank-option">
+                    <input type="radio" name="bank" value="ICICI">
+                    <div class="bank-info">
+                        <span>🏦</span>
+                        <div>
+                            <strong>ICICI Bank</strong>
+                            <p>****5678</p>
+                        </div>
+                    </div>
+                </label>
+                <label class="bank-option">
+                    <input type="radio" name="bank" value="SBI">
+                    <div class="bank-info">
+                        <span>🏦</span>
+                        <div>
+                            <strong>SBI Bank</strong>
+                            <p>****9012</p>
+                        </div>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <!-- Personal Details -->
+        <div class="card">
+            <h3>👤 Your Details</h3>
+            <div class="input-group">
+                <label>Full Name</label>
+                <input type="text" id="setup-name" class="input-field" placeholder="Enter your full name">
+            </div>
+            <div class="input-group">
+                <label>UPI ID</label>
+                <input type="text" id="setup-upi" class="input-field" placeholder="e.g., yourname@bank">
+            </div>
+            <div class="input-group">
+                <label>Age</label>
+                <input type="number" id="setup-age" class="input-field" placeholder="Enter your age">
+            </div>
+            <div class="input-group">
+                <label>State</label>
+                <select id="setup-state" class="input-field">
+                    <option value="KA">Karnataka</option>
+                    <option value="MH">Maharashtra</option>
+                    <option value="DL">Delhi</option>
+                    <option value="TN">Tamil Nadu</option>
+                    <option value="UP">Uttar Pradesh</option>
+                    <option value="WB">West Bengal</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Balance Setup -->
+        <div class="card">
+            <h3>💰 Set Your Balance</h3>
+            <div class="input-group">
+                <label>Current Bank Balance</label>
+                <input type="number" id="setup-balance" class="input-field" placeholder="Enter your bank balance">
+            </div>
+        </div>
+
+        <!-- Security -->
+        <div class="card">
+            <h3>🔐 Set UPI PIN</h3>
+            <div class="input-group">
+                <label>Create 4-6 digit PIN</label>
+                <input type="password" id="setup-mpin" class="input-field" placeholder="Enter PIN" maxlength="6">
+            </div>
+            <div class="input-group">
+                <label>Confirm PIN</label>
+                <input type="password" id="setup-mpin-confirm" class="input-field" placeholder="Confirm PIN" maxlength="6">
+            </div>
+        </div>
+
+        <button class="btn btn-primary btn-block" onclick="completeBankSetupFromComponent()">
+            SAVE & CONTINUE
+        </button>
+    </div>
+</div>
+
+<style>
+.banksetup-container {
+    padding: 20px;
+    background: #f5f7fb;
+    min-height: 100vh;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h2 {
+    color: #6C63FF;
+}
+
+.card {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.bank-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.bank-option {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.bank-option:hover {
+    border-color: #6C63FF;
+    background: #f8f9ff;
+}
+
+.bank-option input {
+    margin-right: 15px;
+}
+
+.bank-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.bank-info span {
+    font-size: 1.5rem;
+}
+
+.btn-block {
+    width: 100%;
+    margin-top: 10px;
+}
+</style>

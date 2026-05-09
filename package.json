@@ -1,0 +1,26 @@
+{
+  "name": "safepay-app",
+  "version": "1.0.0",
+  "description": "AI-Based UPI Fraud Prevention System with Real-Time Risk Detection",
+  "main": "frontend/index.html",
+  "scripts": {
+    "start": "python backend/app.py",
+    "train": "python ml_model/train_model.py",
+    "frontend": "cd frontend && python -m http.server 5500",
+    "backend": "cd backend && python app.py",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\""
+  },
+  "keywords": [
+    "fraud-detection",
+    "upi",
+    "machine-learning",
+    "random-forest",
+    "payment-security",
+    "risk-analysis"
+  ],
+  "author": "SafePay",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}

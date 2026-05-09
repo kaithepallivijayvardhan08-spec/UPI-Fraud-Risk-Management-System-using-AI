@@ -1,0 +1,120 @@
+/* Responsive Styles */
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1024px) {
+    #app {
+        max-width: 600px;
+        border-radius: 20px;
+        margin: 20px auto;
+        min-height: calc(100vh - 40px);
+    }
+    
+    .card {
+        padding: 25px;
+    }
+    
+    .risk-gauge {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1025px) {
+    #app {
+        max-width: 450px;
+        border-radius: 30px;
+        margin: 30px auto;
+        min-height: calc(100vh - 60px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    }
+    
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Small phones */
+@media (max-width: 380px) {
+    .header h1 {
+        font-size: 1.2rem;
+    }
+    
+    .btn {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .risk-gauge {
+        width: 130px;
+        height: 130px;
+    }
+    
+    .risk-score {
+        font-size: 1.2rem;
+    }
+    
+    .pin-key {
+        padding: 15px;
+        font-size: 1.2rem;
+    }
+    
+    .transaction-item {
+        padding: 12px;
+    }
+}
+
+/* Landscape mode */
+@media (max-height: 600px) and (orientation: landscape) {
+    #app {
+        min-height: 100vh;
+    }
+    
+    .bottom-nav {
+        padding: 8px 20px;
+    }
+    
+    .nav-item span:first-child {
+        font-size: 1.2rem;
+    }
+    
+    .nav-item span:last-child {
+        font-size: 0.6rem;
+    }
+}
+
+/* Touch-friendly adjustments */
+@media (hover: none) {
+    .btn:hover {
+        transform: none;
+    }
+    
+    .btn:active {
+        transform: scale(0.98);
+    }
+    
+    .pin-key:active {
+        transform: scale(0.95);
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --white: #1a1a2e;
+        --light-gray: #2a2a3e;
+        --dark: #ffffff;
+        --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    body {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    }
+    
+    .input-group input, .input-group select {
+        background: #2a2a3e;
+        color: white;
+    }
+}

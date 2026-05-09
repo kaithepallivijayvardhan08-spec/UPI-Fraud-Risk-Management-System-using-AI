@@ -1,0 +1,271 @@
+<!DOCTYPE div>
+<div class="screen-container dashboard-container">
+    <!-- Header -->
+    <div class="dashboard-header">
+        <div class="greeting">
+            <h2>Hello, <span id="user-name">User</span>! 👋</h2>
+            <p>Welcome back to SafePay</p>
+        </div>
+        <div class="header-actions">
+            <button class="icon-btn" onclick="showNotifications()">
+                🔔 <span class="badge" id="notification-badge">0</span>
+            </button>
+            <button class="icon-btn" onclick="showProfile()">
+                👤
+            </button>
+        </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon">💰</div>
+            <div class="stat-info">
+                <h3 id="balance-amount">₹0</h3>
+                <p>Balance</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">📊</div>
+            <div class="stat-info">
+                <h3 id="txn-count">0</h3>
+                <p>Transactions</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">🎁</div>
+            <div class="stat-info">
+                <h3 id="cashback-amount">₹0</h3>
+                <p>Cashback</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Risk Meter -->
+    <div class="card risk-card">
+        <h3>📊 Overall Transaction Risk</h3>
+        <div id="dashboard-risk-meter" class="risk-meter-container"></div>
+        <p class="risk-note" id="risk-note">Make your first transaction to see risk score</p>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="quick-actions">
+        <button class="action-btn primary" onclick="showSendMoney()">
+            <span>💸</span> SEND
+        </button>
+        <button class="action-btn" onclick="showScanQR()">
+            <span>📷</span> SCAN QR
+        </button>
+        <button class="action-btn" onclick="showRequestMoney()">
+            <span>📤</span> REQUEST
+        </button>
+        <button class="action-btn" onclick="showSettings()">
+            <span>⚙️</span> SETTINGS
+        </button>
+    </div>
+
+    <!-- Recent Payees -->
+    <div class="card">
+        <h3>⭐ Recent Payees</h3>
+        <div id="recent-payees-list" class="payees-list">
+            <div class="empty-state-small">No recent payees yet</div>
+        </div>
+    </div>
+
+    <!-- Recent Transactions -->
+    <div class="card">
+        <h3>📜 Recent Transactions</h3>
+        <div id="recent-transactions-list" class="transactions-list">
+            <div class="empty-state-small">No transactions yet</div>
+        </div>
+        <button class="view-all-btn" onclick="showHistory()">View All →</button>
+    </div>
+</div>
+
+<style>
+.dashboard-container {
+    padding: 20px;
+    background: #f5f7fb;
+    min-height: 100vh;
+    padding-bottom: 80px;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.greeting h2 {
+    font-size: 1.3rem;
+    color: #1a1a2e;
+}
+
+.greeting p {
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    position: relative;
+    padding: 8px;
+}
+
+.badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #ff3b30;
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 5px;
+    border-radius: 10px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background: white;
+    padding: 15px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.stat-icon {
+    font-size: 1.8rem;
+}
+
+.stat-info h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.stat-info p {
+    font-size: 0.7rem;
+    color: #6c757d;
+}
+
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.action-btn {
+    background: white;
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.action-btn.primary {
+    background: linear-gradient(135deg, #6C63FF, #5a52d6);
+    color: white;
+}
+
+.action-btn span {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+}
+
+.card {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.payees-list {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding: 5px 0;
+}
+
+.payee-item {
+    text-align: center;
+    cursor: pointer;
+}
+
+.payee-avatar {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #6C63FF, #FF6584);
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.payee-name {
+    font-size: 0.7rem;
+    margin-top: 5px;
+}
+
+.transaction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.transaction-info h4 {
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+
+.transaction-info p {
+    font-size: 0.7rem;
+    color: #6c757d;
+}
+
+.transaction-amount {
+    font-weight: 600;
+}
+
+.view-all-btn {
+    width: 100%;
+    background: none;
+    border: none;
+    color: #6C63FF;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.empty-state-small {
+    text-align: center;
+    padding: 20px;
+    color: #6c757d;
+}
+</style>

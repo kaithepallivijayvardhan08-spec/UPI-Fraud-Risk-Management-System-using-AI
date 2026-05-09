@@ -1,0 +1,119 @@
+<!DOCTYPE div>
+<div class="screen-container notifications-container">
+    <div class="header">
+        <button class="back-btn" onclick="goBack()">←</button>
+        <h2>🔔 Notifications</h2>
+        <button class="clear-btn" onclick="clearAllNotificationsFromComponent()">Clear All</button>
+    </div>
+
+    <!-- Notification Tabs -->
+    <div class="tabs">
+        <button class="tab active" onclick="showNotificationTab('all')">All</button>
+        <button class="tab" onclick="showNotificationTab('unread')">Unread</button>
+    </div>
+
+    <!-- Notifications List -->
+    <div id="notifications-list" class="notifications-list">
+        <div class="empty-state">
+            <span>🔔</span>
+            <p>No notifications yet</p>
+        </div>
+    </div>
+</div>
+
+<style>
+.notifications-container {
+    padding: 20px;
+    background: #f5f7fb;
+    min-height: 100vh;
+    padding-bottom: 80px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.clear-btn {
+    background: none;
+    border: none;
+    color: #FF3B30;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tab {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 20px;
+    background: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.tab.active {
+    background: #6C63FF;
+    color: white;
+}
+
+.notification-item {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.notification-item.unread {
+    background: #f0f0ff;
+    border-left: 3px solid #6C63FF;
+}
+
+.notification-icon {
+    font-size: 1.5rem;
+}
+
+.notification-content {
+    flex: 1;
+}
+
+.notification-title {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.notification-message {
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin-bottom: 5px;
+}
+
+.notification-time {
+    font-size: 0.7rem;
+    color: #aaa;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    background: white;
+    border-radius: 16px;
+}
+
+.empty-state span {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 15px;
+}
+</style>

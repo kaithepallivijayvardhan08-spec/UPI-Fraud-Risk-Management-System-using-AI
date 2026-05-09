@@ -1,0 +1,185 @@
+<!DOCTYPE div>
+<div class="screen-container history-container">
+    <div class="header">
+        <button class="back-btn" onclick="goBack()">←</button>
+        <h2>Transaction History</h2>
+        <button class="filter-btn" onclick="showHistoryFilters()">🔍</button>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <input type="text" id="history-search" placeholder="Search by UPI ID or amount..." onkeyup="filterHistoryFromComponent()">
+    </div>
+
+    <!-- Filter Chips -->
+    <div class="filter-chips">
+        <button class="chip active" onclick="filterHistoryBy('all')">All</button>
+        <button class="chip" onclick="filterHistoryBy('week')">This Week</button>
+        <button class="chip" onclick="filterHistoryBy('month')">This Month</button>
+        <button class="chip" onclick="filterHistoryBy('high')">High Risk</button>
+    </div>
+
+    <!-- Transaction List -->
+    <div id="history-list" class="history-list">
+        <div class="empty-state">
+            <span>📭</span>
+            <p>No transactions yet</p>
+            <button class="btn btn-outline" onclick="showSendMoney()">Send Money</button>
+        </div>
+    </div>
+
+    <!-- Summary Card -->
+    <div class="summary-card">
+        <h4>Summary</h4>
+        <div class="summary-stats">
+            <div>
+                <p>Total Spent</p>
+                <h3 id="total-spent">₹0</h3>
+            </div>
+            <div>
+                <p>Total Transactions</p>
+                <h3 id="total-txn">0</h3>
+            </div>
+            <div>
+                <p>Avg Risk</p>
+                <h3 id="avg-risk">0%</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.history-container {
+    padding: 20px;
+    background: #f5f7fb;
+    min-height: 100vh;
+    padding-bottom: 80px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.back-btn, .filter-btn {
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.search-bar {
+    margin-bottom: 15px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 0.9rem;
+}
+
+.filter-chips {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+}
+
+.chip {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    background: white;
+    font-size: 0.8rem;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.chip.active {
+    background: #6C63FF;
+    color: white;
+}
+
+.history-list {
+    margin-bottom: 20px;
+}
+
+.history-item {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.history-item-details h4 {
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+
+.history-item-details p {
+    font-size: 0.7rem;
+    color: #6c757d;
+}
+
+.history-item-amount {
+    font-weight: 600;
+    text-align: right;
+}
+
+.risk-badge {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-top: 4px;
+    display: inline-block;
+}
+
+.risk-low { background: #00C85320; color: #00C853; }
+.risk-medium { background: #FFC10720; color: #FF9800; }
+.risk-high { background: #FF3B3020; color: #FF3B30; }
+
+.summary-card {
+    background: white;
+    border-radius: 16px;
+    padding: 15px;
+}
+
+.summary-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.summary-stats p {
+    font-size: 0.7rem;
+    color: #6c757d;
+}
+
+.summary-stats h3 {
+    font-size: 1rem;
+    margin-top: 5px;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    background: white;
+    border-radius: 16px;
+}
+
+.empty-state span {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 15px;
+}
+</style>

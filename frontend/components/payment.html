@@ -1,0 +1,132 @@
+<!DOCTYPE div>
+<div class="screen-container payment-container">
+    <div class="header">
+        <button class="back-btn" onclick="goBack()">←</button>
+        <h2>Send Money</h2>
+        <div style="width: 40px;"></div>
+    </div>
+
+    <div class="payment-form">
+        <div class="input-group">py
+            <label>📱 TO (UPI ID)</label>
+            <input type="text" id="payment-to" class="input-field" placeholder="Enter UPI ID (e.g., name@bank)">
+        </div>
+
+        <div class="input-group">
+            <label>💰 AMOUNT</label>
+            <input type="number" id="payment-amount" class="input-field" placeholder="Enter amount">
+        </div>
+
+        <div class="input-group">
+            <label>📝 NOTE (Optional)</label>
+            <input type="text" id="payment-note" class="input-field" placeholder="Add a note">
+        </div>
+
+        <!-- Risk Meter Card -->
+        <div class="risk-card" id="risk-card">
+            <h4>🤖 AI Risk Analysis</h4>
+            <div id="payment-risk-meter" class="risk-meter-container"></div>
+            <div id="risk-factors" class="risk-factors"></div>
+        </div>
+
+        <button class="btn btn-primary btn-block" onclick="processPaymentFromComponent()">
+            PAY NOW
+        </button>
+    </div>
+
+    <!-- Recent Payees Quick Select -->
+    <div class="recent-payees">
+        <p>⭐ Recent</p>
+        <div id="quick-payees" class="quick-payees-list"></div>
+    </div>
+</div>
+
+<style>
+.payment-container {
+    padding: 20px;
+    background: #f5f7fb;
+    min-height: 100vh;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.payment-form {
+    background: white;
+    border-radius: 24px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.risk-card {
+    background: #f8f9fa;
+    border-radius: 16px;
+    padding: 15px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.risk-factors {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: #6c757d;
+    text-align: left;
+}
+
+.risk-factors p {
+    margin: 5px 0;
+}
+
+.recent-payees {
+    background: white;
+    border-radius: 16px;
+    padding: 15px;
+}
+
+.quick-payees-list {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+    overflow-x: auto;
+}
+
+.quick-payee {
+    text-align: center;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 12px;
+    transition: background 0.3s;
+}
+
+.quick-payee:hover {
+    background: #f0f0f0;
+}
+
+.quick-payee-avatar {
+    width: 45px;
+    height: 45px;
+    background: #6C63FF;
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+}
+
+.quick-payee-name {
+    font-size: 0.7rem;
+    margin-top: 5px;
+}
+</style>

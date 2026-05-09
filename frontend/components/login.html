@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<div class="screen-container login-container">
+    <div class="logo-section">
+        <div class="logo">
+            <span class="logo-icon">🛡️</span>
+            <h1>SafePay</h1>
+        </div>
+        <p class="tagline">UPI Fraud Prevention System</p>
+    </div>
+
+    <div class="form-section">
+        <div class="input-group">
+            <label>📧 Email / Mobile Number</label>
+            <input type="text" id="login-email" placeholder="Enter your email or mobile number" class="input-field">
+        </div>
+
+        <div class="input-group">
+            <label>🔒 Password</label>
+            <input type="password" id="login-password" placeholder="Enter your password" class="input-field">
+        </div>
+
+        <button class="btn btn-primary btn-block" onclick="handleLoginFromComponent()">
+            LOGIN
+        </button>
+
+        <button class="btn btn-outline btn-block" onclick="showBiometricLoginFromComponent()">
+            👆 Login with Fingerprint
+        </button>
+
+        <div class="auth-links">
+            <a href="#" onclick="showForgotPassword()">Forgot Password?</a>
+            <span>|</span>
+            <a href="#" onclick="showSignupFromComponent()">Create Account</a>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        <p>🔐 Your security is our priority</p>
+    </div>
+</div>
+
+<style>
+.screen-container {
+    min-height: 100vh;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.logo-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logo-icon {
+    font-size: 3rem;
+    display: block;
+}
+
+.logo h1 {
+    font-size: 2rem;
+    color: white;
+    margin: 10px 0;
+}
+
+.tagline {
+    color: rgba(255,255,255,0.8);
+}
+
+.form-section {
+    background: white;
+    border-radius: 24px;
+    padding: 30px 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+}
+
+.input-field {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: #6C63FF;
+    box-shadow: 0 0 0 3px rgba(108,99,255,0.1);
+}
+
+.btn-block {
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+.auth-links {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.auth-links a {
+    color: #6C63FF;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.footer-note {
+    text-align: center;
+    margin-top: 30px;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.8rem;
+}
+</style>
