@@ -76,7 +76,7 @@ Open `index.html` in your browser or use Live Server in VS Code.
 
 ## 👥 Team Information
 
-* Team Size: 4 Members
+* Team Size: 3 Members
 
 ---
 
