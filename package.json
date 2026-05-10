@@ -1,7 +1,7 @@
 {
   "name": "safepay-app",
   "version": "1.0.0",
-  "description": "AI-Based UPI Fraud Prevention System with Real-Time Risk Detection",
+  "description": "AI-Based UPI Fraud risk management System with Real-Time Risk Detection",
   "main": "frontend/index.html",
   "scripts": {
     "start": "python backend/app.py",
